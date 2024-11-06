@@ -10,13 +10,14 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 import main.Game;
 import static utils.Constants.PlayerConstants.ATTACK;
+import static utils.Constants.PlayerConstants.CRY;
 import static utils.Constants.PlayerConstants.GetSpriteAmount;
 import static utils.Constants.PlayerConstants.IDLE;
 import static utils.Constants.PlayerConstants.RUNNING;
 
 public class Pug extends Entity {
 	private BufferedImage[][] animations;
-	private int aniTick, aniIndex, aniSpeed = 37;
+	private int aniTick, aniIndex, aniSpeed = 42;
 	private int playerAction = IDLE;
 	private boolean left, right, attacking;
 	private boolean moving = false;
@@ -63,7 +64,7 @@ public class Pug extends Entity {
 		
 		try {
 			BufferedImage img = ImageIO.read(is);
-			animations = new BufferedImage[3][4];
+			animations = new BufferedImage[4][4];
 			
 			for (int j = 0; j < animations.length; j++) {
 				for (int i = 0; i < animations[j].length; i++) {
@@ -97,7 +98,9 @@ public class Pug extends Entity {
 	public void setAnimation() {	
 		int startAni = playerAction;
 		
-		if (attacking) {
+		if (gameState.getZombieManager().isGameOver()) {
+			playerAction = CRY;
+		} else if (attacking) {
 			playerAction = ATTACK;
 		} else if (moving) {
 			playerAction = RUNNING;

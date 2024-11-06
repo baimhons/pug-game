@@ -2,6 +2,7 @@ package main;
 
 import entities.Pug;
 import gamestates.GameState;
+import gamestates.MapSelection;
 import gamestates.Menu;
 import gamestates.Playing;
 import input.KeyboardInput;
@@ -25,8 +26,10 @@ public class Game implements Runnable{
 	
 	private Pug pug;
 	
+	private MapSelection mapSelection;
+	
 	public Game() {
-		 initClasses();
+		 	initClasses();
 		    gamePanel = new GamePanel(this);
 		    gamePanel.addKeyListener(new KeyboardInput(gamePanel)); 
 		    gameWindow = new GameWindow(gamePanel);
@@ -36,7 +39,9 @@ public class Game implements Runnable{
 	
 	private void initClasses() {
 		menu = new Menu(this);
+		mapSelection = new MapSelection(this);
 		playing = new Playing(this);
+
 	}
 	
 	private void startGameLoop() {
@@ -52,6 +57,9 @@ public class Game implements Runnable{
 		case PLAYING:
 			playing.update();
 			break;
+		case MAP_SELECTION:
+			mapSelection.update();
+			break;
 		default:
 			break;
 		}
@@ -64,7 +72,9 @@ public class Game implements Runnable{
 			break;
 		case PLAYING:
 			playing.draw(g);
-
+			break;
+		case MAP_SELECTION:
+			mapSelection.draw(g);
 			break;
 		default:
 			break;
@@ -124,4 +134,7 @@ public class Game implements Runnable{
 		return playing;
 	}
 	
+	public MapSelection getMapSelection() {
+		return mapSelection;
+	}
 }

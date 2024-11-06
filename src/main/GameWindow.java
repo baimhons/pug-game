@@ -9,6 +9,7 @@ public class GameWindow{
 		
 		jFrame = new JFrame();
 		
+		jFrame.setTitle("A pug fights with zombies to protect his dog food, which the zombies are trying to steal.");
 		jFrame.setDefaultCloseOperation(3);
 		jFrame.add(gamePanel);
 		jFrame.setLocationRelativeTo(null);

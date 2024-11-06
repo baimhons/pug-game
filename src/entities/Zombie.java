@@ -10,7 +10,7 @@ import static utils.Constants.PlayerConstants.*;
 
 public class Zombie extends Entity {
     private BufferedImage[][] animations;
-    private int aniTick, aniIndex, aniSpeed = 37;
+    private int aniTick, aniIndex, aniSpeed = 42;
     private int zombieAction = RUNNING;
     private boolean moving = true;
     private float zombieSpeed = 0.15f;
@@ -102,8 +102,8 @@ public class Zombie extends Entity {
                 x += zombieSpeed;  // Move left
             }
             
-            // Check if the zombie has reached the center (assumed to be at x = 500)
-            if ((spawnFromLeft && x >= 500) || (!spawnFromLeft && x <= 500)) {
+            // Check if the zombie has reached the center (assumed to be at x = 520)
+            if ((spawnFromLeft && x >= 480) || (!spawnFromLeft && x <= 575)) {
                 reachedCenter = true;
             }
         }

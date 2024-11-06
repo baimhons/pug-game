@@ -1,11 +1,9 @@
 package main;
 
+import input.KeyboardInput;
 import java.awt.Dimension;
 import java.awt.Graphics;
-
 import javax.swing.JPanel;
-
-import input.KeyboardInput;
 
 
 public class GamePanel extends JPanel {

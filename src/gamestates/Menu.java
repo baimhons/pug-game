@@ -108,12 +108,12 @@ public class Menu extends State implements Statemethods {
 	public void mouseReleased(MouseEvent e) {}
 
 	@Override
-	public void moveMoved(MouseEvent e) {}
+	public void mouseMoved(MouseEvent e) {}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER)
-			GameState.state = GameState.PLAYING;
+			GameState.state = GameState.MAP_SELECTION;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public class Constants {
 		public static final int IDLE = 0;
 		public static final int RUNNING = 1;
 		public static final int ATTACK = 2;
+		public static final int CRY = 3;
 		
 		public static int GetSpriteAmount(int player_action) {
 			
@@ -21,6 +22,8 @@ public class Constants {
 			case IDLE:
 				return 4;
 			case ATTACK:
+				return 4;
+			case CRY:
 				return 4;
 			default:
 				return 1;

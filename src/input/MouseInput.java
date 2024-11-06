@@ -21,10 +21,13 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 	public void mouseMoved(MouseEvent e) {
 		switch(GameState.state) {
 		case MENU:
-			gamePanel.getGame().getMenu().moveMoved(e);
+			gamePanel.getGame().getMenu().mouseMoved(e);
+			break;
+		case MAP_SELECTION:
+			gamePanel.getGame().getMapSelection().mouseMoved(e);
 			break;
 		case PLAYING:
-			gamePanel.getGame().getPlaying().moveMoved(e);
+			gamePanel.getGame().getPlaying().mouseMoved(e);
 			break;
 		default:
 			break;
@@ -50,6 +53,9 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 			case MENU:
 				gamePanel.getGame().getMenu().mousePressed(e);
 				break;
+			case MAP_SELECTION:
+				gamePanel.getGame().getMapSelection().mousePressed(e);
+				break;
 			case PLAYING:
 				gamePanel.getGame().getPlaying().mousePressed(e);
 				break;
@@ -62,6 +68,9 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 		switch(GameState.state) {
 			case MENU:
 				gamePanel.getGame().getMenu().mouseReleased(e);
+				break;
+			case MAP_SELECTION:
+				gamePanel.getGame().getMapSelection().mouseReleased(e);
 				break;
 			case PLAYING:
 				gamePanel.getGame().getPlaying().mouseReleased(e);

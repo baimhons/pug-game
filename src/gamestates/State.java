@@ -9,8 +9,6 @@ public class State {
 		this.game = game;
 	}
 	
-
-	
 	public Game getGame() {
 		return game;
 	}

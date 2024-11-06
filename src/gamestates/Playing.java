@@ -15,6 +15,7 @@ public class Playing extends State implements Statemethods {
     private Levels levels;
     private int gameWidth, gameHeight;
     private DogFood dogFood;
+    private int currentMap;
     
 
     public Playing(Game game) {
@@ -26,6 +27,7 @@ public class Playing extends State implements Statemethods {
 
     private void initClasses() {
         levels = new Levels();
+        levels.setLevel(currentMap);
         dogFood = new DogFood(gameWidth, 1150);
         pug = new Pug(200, 550, this);
         zombieManager = new ZombieManager(this);
@@ -33,7 +35,11 @@ public class Playing extends State implements Statemethods {
         
     }
 
-  
+    public void setCurrentMap(int mapIndex) {
+        this.currentMap = mapIndex;
+        levels.setLevel(mapIndex);
+        initClasses();
+    }
 
     @Override
     public void update() {
@@ -68,36 +74,40 @@ public class Playing extends State implements Statemethods {
     }
 
     @Override
-    public void moveMoved(MouseEvent e) {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
     public void keyPressed(KeyEvent e) {
-        switch(e.getKeyCode()) {
-            case KeyEvent.VK_A:
-                pug.setLeft(true);
-                break;
-            case KeyEvent.VK_D:
-                pug.setRight(true);
-                break;
-            case KeyEvent.VK_SPACE:
-                pug.attack();
-                zombieManager.checkPugAttack(pug.getAttackBox());
-                break;
+        if (!zombieManager.isGameOver()) {
+            switch(e.getKeyCode()) {
+                case KeyEvent.VK_A:
+                    pug.setLeft(true);
+                    break;
+                case KeyEvent.VK_D:
+                    pug.setRight(true);
+                    break;
+                case KeyEvent.VK_SPACE:
+                    pug.attack();
+                    zombieManager.checkPugAttack(pug.getAttackBox());
+                    break;
+            }
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch(e.getKeyCode()) {
-            case KeyEvent.VK_A:
-                pug.setLeft(false);
-                break;
-            case KeyEvent.VK_D:
-                pug.setRight(false);
-                break;
+        if (!zombieManager.isGameOver()) {
+            switch(e.getKeyCode()) {
+                case KeyEvent.VK_A:
+                    pug.setLeft(false);
+                    break;
+                case KeyEvent.VK_D:
+                    pug.setRight(false);
+                    break;
+            }
         }
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        // TODO Auto-generated method stub
     }
 
     public Pug getPug(){
@@ -114,5 +124,9 @@ public class Playing extends State implements Statemethods {
 
     public DogFood getDogFood() {
         return dogFood;
+    }
+
+    public ZombieManager getZombieManager() {
+        return zombieManager;
     }
 }
