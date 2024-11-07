@@ -127,19 +127,10 @@ public class MapSelection extends State implements Statemethods {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        // Left arrow region
-        if (e.getX() < Game.GAME_WIDTH / 4) {
-            selectedMap = (selectedMap - 1 + NUM_MAPS) % NUM_MAPS;
-        } 
-        // Right arrow region
-        else if (e.getX() > Game.GAME_WIDTH * 3/4) {
-            selectedMap = (selectedMap + 1) % NUM_MAPS;
-        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        GameState.state = GameState.PLAYING;
     }
 
     // Other required methods
